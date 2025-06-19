@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 ratings.add(quantity)
                 comments.add(comment)
 
-                // Clear input fields
+                // Clear fields
                 songTitleInput.text.clear()
                 artistNameInput.text.clear()
                 ratingInput.text.clear()

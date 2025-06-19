@@ -52,7 +52,7 @@ class DetailedView : AppCompatActivity() {
                     val average = if (ratings.isNotEmpty()) sum.toDouble() / ratings.size else 0.0
                     allSongs.append("\nAverage Rating: %.2f".format(average))
 
-                    averageRating.text = "\nAverage Rating Average Rating: %.2f".format(average)
+                    averageRating.text = "\nAverage Rating: %.2f".format(average)
 
                     backButton.setOnClickListener {
                         finish()
