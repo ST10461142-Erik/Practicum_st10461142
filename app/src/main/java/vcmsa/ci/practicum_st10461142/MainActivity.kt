@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -34,24 +35,29 @@ class MainActivity : AppCompatActivity() {
         val addToPlaylistButton = findViewById<Button>(R.id.addToPlaylistButton)
         val viewPlaylistButton = findViewById<Button>(R.id.viewPlaylistButton)
         val exitButton = findViewById<Button>(R.id.exitButton)
+        val feedbackText = findViewById<TextView>(R.id.feedbackText)
 
         // Add item to arrays
         addToPlaylistButton.setOnClickListener {
             try {
-                val item = songTitleInput.text.toString()
-                val category = artistNameInput.text.toString()
-                val quantity = ratingInput.text.toString().toInt()
+                val song = songTitleInput.text.toString()
+                val artist = artistNameInput.text.toString()
+                val rating = ratingInput.text.toString().toInt()
                 val comment = commentInput.text.toString()
 
                 // Input validation
-                if (item.isEmpty() || category.isEmpty() || comment.isEmpty()) {
+                if (song.isEmpty() || artist.isEmpty() || comment.isEmpty()) {
                     Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
+                //Ratings must be > 0 and <= 5
+                if ( rating > 5 ) { feedbackText.text = "Enter a Valid Number for Rating!"
+                    return@setOnClickListener
+                }
 
-                songs.add(item)
-                artists.add(category)
-                ratings.add(quantity)
+                songs.add(song)
+                artists.add(artist)
+                ratings.add(rating)
                 comments.add(comment)
 
                 // Clear fields

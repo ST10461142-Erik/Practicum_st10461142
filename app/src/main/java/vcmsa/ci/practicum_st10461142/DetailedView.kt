@@ -34,6 +34,10 @@ class DetailedView : AppCompatActivity() {
             val averageRating = findViewById<TextView>(R.id.averageRatingTextView)
             val calculateBtn = findViewById<Button>(R.id.calculateBtn)
 
+        backButton.setOnClickListener {
+            finish()
+        }
+
             // Show Playlist
             displayBtn.setOnClickListener {
                 val allSongs = StringBuilder()
@@ -53,11 +57,8 @@ class DetailedView : AppCompatActivity() {
                     allSongs.append("\nAverage Rating: %.2f".format(average))
 
                     averageRating.text = "\nAverage Rating: %.2f".format(average)
-
-                    backButton.setOnClickListener {
-                        finish()
-                    }
+                }
                 }
             }
     }
-}
+
