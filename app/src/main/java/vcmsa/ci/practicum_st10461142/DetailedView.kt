@@ -1,6 +1,6 @@
+//ST10461142 - Erik Mendes
 package vcmsa.ci.practicum_st10461142
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -10,7 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class DetailedView : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,14 +37,13 @@ class DetailedView : AppCompatActivity() {
             finish()
         }
 
-            // Show Playlist
+        // Show Playlist
             displayBtn.setOnClickListener {
                 val allSongs = StringBuilder()
             for (i in songs.indices) {
                 allSongs.append("• ${songs[i]} (${artists[i]}) - Rating: ${ratings[i]} - ${comments[i]}\n")
             }
                 fullList.text = "Playlist:\n$allSongs"
-
 
                 // Calculate and display average rating
                 calculateBtn.setOnClickListener {

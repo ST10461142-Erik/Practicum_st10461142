@@ -1,3 +1,4 @@
+//ST10461142 - Erik Mendes
 package vcmsa.ci.practicum_st10461142
 
 import android.content.Intent
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val exitButton = findViewById<Button>(R.id.exitButton)
         val feedbackText = findViewById<TextView>(R.id.feedbackText)
 
-        // Add item to arrays
+        // Add song to arrays
         addToPlaylistButton.setOnClickListener {
             try {
                 val song = songTitleInput.text.toString()
