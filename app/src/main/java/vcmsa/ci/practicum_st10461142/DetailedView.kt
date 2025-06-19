@@ -26,26 +26,38 @@ class DetailedView : AppCompatActivity() {
             val ratings = intent.getIntegerArrayListExtra("ratings") ?: arrayListOf()
             val comments = intent.getStringArrayListExtra("comments") ?: arrayListOf()
 
+
+
             val fullList = findViewById<TextView>(R.id.displayTextView)
             val backButton = findViewById<Button>(R.id.backButton)
             val displayBtn = findViewById<Button>(R.id.displayBtn)
+            val averageRating = findViewById<TextView>(R.id.averageRatingTextView)
+            val calculateBtn = findViewById<Button>(R.id.calculateBtn)
 
-            // Show complete list
+            // Show Playlist
             displayBtn.setOnClickListener {
                 val allSongs = StringBuilder()
             for (i in songs.indices) {
-                allSongs.append("• ${songs[i]} (${artists[i]}) - Rat: ${ratings[i]} - ${comments[i]}\n")
+                allSongs.append("• ${songs[i]} (${artists[i]}) - Rating: ${ratings[i]} - ${comments[i]}\n")
             }
                 fullList.text = "Playlist:\n$allSongs"
 
 
-            //Calculate and Display average Rating
+                // Calculate and display average rating
+                calculateBtn.setOnClickListener {
+                    var sum = 0
+                    for (rating in ratings) {
+                        sum += rating
+                    }
+                    val average = if (ratings.isNotEmpty()) sum.toDouble() / ratings.size else 0.0
+                    allSongs.append("\nAverage Rating: %.2f".format(average))
 
+                    averageRating.text = "\nAverage Rating Average Rating: %.2f".format(average)
 
-
-            backButton.setOnClickListener {
-                finish()
+                    backButton.setOnClickListener {
+                        finish()
+                    }
                 }
             }
-        }
     }
+}
