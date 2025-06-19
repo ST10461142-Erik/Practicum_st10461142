@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         // Inputs and Buttons
         val songTitleInput = findViewById<EditText>(R.id.songTitleInput)
@@ -59,10 +64,16 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, "Enter a valid number for Rating", Toast.LENGTH_SHORT).show()
             }
+        }
 
             // Navigate to second screen
             viewPlaylistButton.setOnClickListener {
                 val intent = Intent(this, DetailedView::class.java)
+                intent.putStringArrayListExtra("songs", ArrayList(songs))
+                intent.putStringArrayListExtra("artists", ArrayList(artists))
+                intent.putIntegerArrayListExtra("ratings", ArrayList(ratings))
+                intent.putStringArrayListExtra("comments", ArrayList(comments))
+                startActivity(intent)
             }
 
             // Exit app
@@ -71,4 +82,3 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-}

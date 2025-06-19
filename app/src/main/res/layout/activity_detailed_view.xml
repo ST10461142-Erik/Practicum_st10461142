@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:background="#FAFAFA"
     android:orientation="vertical"
     android:padding="20dp"
@@ -20,35 +21,36 @@
         android:id="@+id/displayBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Display song" />
+        android:backgroundTint="#607D8B"
+        android:text="Display songs" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/displayTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="" />
 
     <Button
         android:id="@+id/calculateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#607D8B"
-        android:text="Calculate Average" />
+        android:text="Show Average" />
 
     <TextView
-        android:id="@+id/itemsWithQuantityTwo"
-        android:text="Items with quantity ≥ 2:"
-        android:textSize="16sp"
-        android:textColor="#555555"
+        android:id="@+id/averageRatingTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:text="Average Rating:"
+        android:textColor="#555555"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/backButton"
-        android:text="Back to Playlist Manager"
-        android:backgroundTint="#607D8B"
-        android:textColor="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:backgroundTint="#42555F"
+        android:text="Back to Playlist Manager"
+        android:textColor="#FFFFFF" />
 </LinearLayout>
